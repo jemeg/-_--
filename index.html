@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لعبة الرعب</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- شاشة البداية -->
+    <div id="start-screen" class="screen">
+        <div class="menu-content">
+            <h1>لعبة التريس</h1>
+            <h2>المصمم:- Ghazwan-MG</h2>
+            <h3>بدعم:-Ray & ahmed_aj69</h3>
+            <div class="menu-section" id="name-screen">
+                <h5>أدخل اسمك</h5>
+                <input type="text" id="player-name" placeholder="اسم اللاعب">
+                <button id="name-submit">دخول</button>
+            </div>
+
+            <div class="menu-section hidden" id="room-screen">
+                <div class="room-options">
+                    <div class="create-room">
+                        <h6>إنشاء غرفة</h6>
+                        <input type="text" id="new-room-name" placeholder="اسم الغرفة">
+                        <select id="max-players">
+                            <option value="2">2 لاعبين</option>
+                            <option value="3">3 لاعبين</option>
+                            <option value="4">4 لاعبين</option>
+                        </select>
+                        <select id="difficulty">
+                            <option value="easy">سهل</option>
+                            <option value="medium">متوسط</option>
+                            <option value="hard">صعب</option>
+                        </select>
+                        <button id="create-room-btn">إنشاء</button>
+                    </div>
+
+                    <div class="join-room">
+                        <h7>انضمام لغرفة</h7>
+                        <div class="rooms-list" id="rooms-list">
+                            <!-- ستتم إضافة الغرف هنا -->
+                        </div>
+                        <input type="text" id="room-code" placeholder="أو أدخل رمز الغرفة">
+                        <button id="join-room-btn">انضمام</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-section hidden" id="waiting-screen">
+                <h2>انتظار اللاعبين</h2>
+                <div class="room-info">
+                    <p>رمز الغرفة: <span id="room-code-display"></span></p>
+                    <p>اللاعبين: <span id="connected-players"></span></p>
+                </div>
+                <div id="waiting-players-list">
+                    <!-- ستتم إضافة اللاعبين هنا -->
+                </div>
+                <div class="waiting-options">
+                    <button id="start-game-btn">بدء اللعبة</button>
+                    <button id="leave-room-btn">مغادرة</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- شاشة اللعب -->
+    <div id="game-screen" class="screen hidden">
+        <canvas id="gameCanvas"></canvas>
+        <div class="hud">
+            <div class="health-bar">
+                <div class="health-fill"></div>
+                <span class="health-text">100</span>
+            </div>
+            <div class="sanity-bar">
+                <div class="sanity-fill"></div>
+                <span class="sanity-text">100</span>
+            </div>
+            <div class="noise-meter">
+                <div class="noise-fill"></div>
+                <span class="noise-text">0</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- شاشة الموت -->
+    <div id="death-screen" class="screen hidden">
+        <div class="death-content">
+            <div class="monster-message">
+                <div class="monster-avatar"></div>
+                <div class="message-bubble">
+                    <p id="death-message" class="typing-effect"></p>
+                    <div class="monster-name" id="killer-name"></div>
+                </div>
+            </div>
+            <div class="death-stats">
+                <h3>إحصائيات موتك</h3>
+                <p>وقت البقاء: <span id="survival-time">0:00</span></p>
+                <p>الوحوش التي قتلتها: <span id="monsters-killed">0</span></p>
+            </div>
+            <div class="death-options">
+                <button id="spectate-btn">مشاهدة اللعب</button>
+                <button id="return-lobby-btn">العودة للقائمة</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- شاشة الفوز -->
+    <div id="win-screen" class="screen hidden">
+        <div class="win-content">
+            <h2>مبروك! لقد نجوت!</h2>
+            <div class="win-stats">
+                <!-- ستتم إضافة الإحصائيات هنا -->
+            </div>
+            <button id="play-again-btn">العب مرة أخرى</button>
+        </div>
+    </div>
+
+    <!-- رسائل النظام -->
+    <div id="system-messages"></div>
+
+    <!-- تحميل المكتبات والسكربتات -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
